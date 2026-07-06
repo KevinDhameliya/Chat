@@ -1,8 +1,8 @@
 # Chat 💬
 
-A modern Android Chat Application built using **Kotlin** and **Jetpack Compose** following **Clean Architecture** and **MVVM** principles.
+A modern Android Chat Application built using **Kotlin** and Android's traditional **XML View System**, following **Clean Architecture** and the **MVVM** architectural pattern.
 
-The goal of this project is to create a scalable, maintainable, and production-ready chat application while following Android development best practices.
+This project aims to provide a scalable, maintainable, and production-ready chat application while following Android development best practices.
 
 ---
 
@@ -18,6 +18,7 @@ The goal of this project is to create a scalable, maintainable, and production-r
 - Image & File Sharing
 - Push Notifications
 - Search Conversations
+- User Profile Management
 - Dark Mode Support
 
 ---
@@ -25,20 +26,22 @@ The goal of this project is to create a scalable, maintainable, and production-r
 ## 🛠️ Tech Stack
 
 - Kotlin
-- Jetpack Compose
+- Android XML
 - MVVM Architecture
 - Clean Architecture
 - Repository Pattern
+- Android Jetpack Components
+- LiveData
+- ViewModel
 - Coroutines
-- StateFlow
 - Hilt (Dependency Injection)
 - Room Database
 - Retrofit
 - OkHttp
 - Firebase Authentication
 - Firebase Cloud Messaging (FCM)
-- Navigation Compose
-- Material 3
+- Navigation Component
+- Material Design Components
 
 ---
 
@@ -59,12 +62,15 @@ com.kevin.chat
 │   └── usecase
 │
 ├── presentation
-│   ├── authentication
-│   ├── chat
+│   ├── auth
 │   ├── home
+│   ├── chat
 │   ├── profile
-│   ├── navigation
-│   └── components
+│   ├── settings
+│   ├── adapters
+│   ├── fragments
+│   ├── activities
+│   └── viewmodel
 │
 ├── di
 │
@@ -73,31 +79,31 @@ com.kevin.chat
 
 ---
 
-## 📱 Architecture
+## 🏗️ Architecture
 
 This project follows **Clean Architecture** with the **MVVM** design pattern.
 
 ```
-UI (Jetpack Compose)
-        │
-        ▼
-ViewModel
-        │
-        ▼
-Use Cases
-        │
-        ▼
-Repository
-        │
- ┌──────┴──────┐
- ▼             ▼
-Local       Remote
-(Room)     (API/Firebase)
+UI (Activity / Fragment)
+          │
+          ▼
+      ViewModel
+          │
+          ▼
+       Use Cases
+          │
+          ▼
+      Repository
+          │
+    ┌─────┴─────┐
+    ▼           ▼
+ Local       Remote
+(Room DB)   Firebase/API
 ```
 
 ---
 
-## 📸 Screens (Planned)
+## 📱 Planned Screens
 
 - Splash Screen
 - Login
@@ -105,25 +111,25 @@ Local       Remote
 - Home
 - Chat List
 - Chat Screen
-- Profile
+- User Profile
 - Settings
 
 ---
 
 ## 🎯 Project Goals
 
-- Learn modern Android development.
-- Follow Android best practices.
-- Build a scalable chat application.
-- Write clean and maintainable code.
-- Practice Clean Architecture and MVVM.
+- Learn modern Android development using Kotlin.
+- Build a scalable real-time chat application.
+- Follow Clean Architecture and MVVM.
+- Write clean, maintainable, and testable code.
+- Apply Android development best practices.
 
 ---
 
 ## 📋 Requirements
 
-- Android Studio Narwhal or newer
-- Kotlin 2.x
+- Android Studio (Latest Stable Version)
+- Kotlin
 - Android SDK 24+
 - JDK 21
 
@@ -131,11 +137,27 @@ Local       Remote
 
 ## ⚙️ Installation
 
+Clone the repository:
+
 ```bash
 git clone https://github.com/KevinDhameliya/Chat.git
 ```
 
-Open the project in Android Studio and let Gradle sync complete.
+Open the project in Android Studio and allow Gradle to sync.
+
+---
+
+## 📌 Future Improvements
+
+- Group Chat
+- Voice Messages
+- Video Calling
+- Message Reactions
+- Chat Backup & Restore
+- End-to-End Encryption
+- Message Search
+- Pinned Chats
+- Archived Chats
 
 ---
 
@@ -143,7 +165,11 @@ Open the project in Android Studio and let Gradle sync complete.
 
 Contributions are welcome!
 
-Feel free to fork the repository, create a feature branch, and submit a pull request.
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Push the branch.
+5. Open a Pull Request.
 
 ---
 
