@@ -1,4 +1,4 @@
-package com.kevin.chatapplication
+package com.kevin.chatapplication.screens.splash
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -8,6 +8,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.kevin.chatapplication.screens.authentication.AuthActivity
+import com.kevin.chatapplication.R
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
@@ -23,7 +25,7 @@ class SplashActivity : AppCompatActivity() {
         }
 
         Handler(mainLooper).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, AuthActivity::class.java))
             finish()
         }, 3000)
     }
