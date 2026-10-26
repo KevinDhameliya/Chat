@@ -3,11 +3,183 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/chatsFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.kevin.chatapplication.fragments.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/chatsFragment"
+        android:name="com.kevin.chatapplication.fragments.home.ChatsFragment"
+        android:label="@string/nav_chats"
+        tools:layout="@layout/fragment_chats">
+        <action
+            android:id="@+id/action_chatsFragment_to_newChatFragment"
+            app:destination="@id/newChatFragment" />
+        <action
+            android:id="@+id/action_chatsFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_chatsFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/newChatFragment"
+        android:name="com.kevin.chatapplication.fragments.home.NewChatFragment"
+        android:label="@string/new_chat"
+        tools:layout="@layout/fragment_new_chat">
+        <action
+            android:id="@+id/action_newChatFragment_to_chatFragment"
+            app:destination="@id/chatFragment"
+            app:popUpTo="@id/newChatFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_newChatFragment_to_groupCreationFragment"
+            app:destination="@id/groupCreationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/groupCreationFragment"
+        android:name="com.kevin.chatapplication.fragments.home.GroupCreationFragment"
+        android:label="@string/new_group"
+        tools:layout="@layout/fragment_group_creation">
+        <!-- Back from the new group goes straight to Chats. -->
+        <action
+            android:id="@+id/action_groupCreationFragment_to_chatFragment"
+            app:destination="@id/chatFragment"
+            app:popUpTo="@id/newChatFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.kevin.chatapplication.fragments.home.ChatFragment"
+        android:label="ChatFragment"
+        tools:layout="@layout/fragment_chat">
+        <argument
+            android:name="otherUid"
+            app:argType="string" />
+        <argument
+            android:name="otherName"
+            app:argType="string" />
+        <!-- Group chats pass their chat id; direct chats leave these as defaults. -->
+        <argument
+            android:name="chatId"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="isGroup"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_chatFragment_to_contactProfileFragment"
+            app:destination="@id/contactProfileFragment" />
+        <action
+            android:id="@+id/action_chatFragment_to_mediaViewerFragment"
+            app:destination="@id/mediaViewerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/contactProfileFragment"
+        android:name="com.kevin.chatapplication.fragments.home.ContactProfileFragment"
+        android:label="@string/contact_info"
+        tools:layout="@layout/fragment_contact_profile">
+        <argument
+            android:name="otherUid"
+            app:argType="string" />
+        <argument
+            android:name="otherName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_contactProfileFragment_to_mediaViewerFragment"
+            app:destination="@id/mediaViewerFragment" />
+        <action
+            android:id="@+id/action_contactProfileFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/mediaViewerFragment"
+        android:name="com.kevin.chatapplication.fragments.home.MediaViewerFragment"
+        android:label="MediaViewerFragment"
+        tools:layout="@layout/fragment_media_viewer">
+        <argument
+            android:name="chatId"
+            app:argType="string" />
+        <argument
+            android:name="messageId"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.kevin.chatapplication.fragments.home.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/updatesFragment"
+        android:name="com.kevin.chatapplication.fragments.home.UpdatesFragment"
+        android:label="@string/nav_updates"
+        tools:layout="@layout/fragment_updates">
+        <action
+            android:id="@+id/action_updatesFragment_to_statusViewerFragment"
+            app:destination="@id/statusViewerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/statusViewerFragment"
+        android:name="com.kevin.chatapplication.fragments.home.StatusViewerFragment"
+        android:label="StatusViewerFragment"
+        tools:layout="@layout/fragment_status_viewer">
+        <argument
+            android:name="ownerUid"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/callsFragment"
+        android:name="com.kevin.chatapplication.fragments.home.CallsFragment"
+        android:label="@string/nav_calls"
+        tools:layout="@layout/fragment_calls">
+        <action
+            android:id="@+id/action_callsFragment_to_contactProfileFragment"
+            app:destination="@id/contactProfileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.kevin.chatapplication.fragments.home.SettingsFragment"
+        android:label="@string/nav_settings"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_settingsFragment_to_myProfileFragment"
+            app:destination="@id/myProfileFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_blockedUsersFragment"
+            app:destination="@id/blockedUsersFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_themeFragment"
+            app:destination="@id/themeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/myProfileFragment"
+        android:name="com.kevin.chatapplication.fragments.home.MyProfileFragment"
+        android:label="@string/my_profile"
+        tools:layout="@layout/fragment_my_profile" />
+
+    <fragment
+        android:id="@+id/blockedUsersFragment"
+        android:name="com.kevin.chatapplication.fragments.home.BlockedUsersFragment"
+        android:label="@string/settings_blocked"
+        tools:layout="@layout/fragment_blocked_users" />
+
+    <fragment
+        android:id="@+id/themeFragment"
+        android:name="com.kevin.chatapplication.fragments.home.ThemeFragment"
+        android:label="@string/settings_theme"
+        tools:layout="@layout/fragment_theme" />
 </navigation>

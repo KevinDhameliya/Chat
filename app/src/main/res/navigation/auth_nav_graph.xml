@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/auth_nav_graph"
     app:startDestination="@id/loginFragment">
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.kevin.chatapplication.fragments.authentication.LoginFragment"
@@ -16,29 +17,29 @@
             android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/signupFragment"
         android:name="com.kevin.chatapplication.fragments.authentication.SignupFragment"
         android:label="fragment_signup"
         tools:layout="@layout/fragment_signup">
-        <argument
-            android:name="userName"
-            app:argType="string" />
+        <!-- After signing up the user is logged in, so clear the auth screens. -->
         <action
-            android:id="@+id/action_signupFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:popUpTo="@id/loginFragment"
+            android:id="@+id/action_signupFragment_to_createProfileFragment"
+            app:destination="@id/createProfileFragment"
+            app:popUpTo="@id/auth_nav_graph"
             app:popUpToInclusive="true" />
     </fragment>
+
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="com.kevin.chatapplication.fragments.authentication.ForgotPasswordFragment"
         android:label="fragment_forgot_password"
-        tools:layout="@layout/fragment_forgot_password">
-        <action
-            android:id="@+id/action_forgotPasswordFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
+        tools:layout="@layout/fragment_forgot_password" />
+
+    <fragment
+        android:id="@+id/createProfileFragment"
+        android:name="com.kevin.chatapplication.fragments.authentication.CreateProfileFragment"
+        android:label="fragment_create_profile"
+        tools:layout="@layout/fragment_create_profile" />
 </navigation>
