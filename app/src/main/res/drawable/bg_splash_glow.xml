@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Soft halo behind the logo. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <gradient
+        android:endColor="#000F9D8A"
+        android:gradientRadius="50%p"
+        android:startColor="#330F9D8A"
+        android:type="radial" />
+</shape>

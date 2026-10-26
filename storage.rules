@@ -1,0 +1,44 @@
+rules_version = '2';
+
+// Paste these into Firebase console > Storage > Rules, then Publish.
+// The first time, the console asks to let Storage read Firestore (needed for groups): allow it.
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isChatMember(chatId) {
+      return request.auth.uid in chatId.split('_') ||
+        request.auth.uid in firestore.get(/databases/(default)/documents/chats/$(chatId)).data.participants;
+    }
+
+    // Chat photos: chat_images/<chatId>/<file>.jpg
+    match /chat_images/{chatId}/{fileName} {
+      allow read, delete: if signedIn() && isChatMember(chatId);
+      allow create, update: if signedIn() && isChatMember(chatId)
+                   && request.resource.size < 10 * 1024 * 1024
+                   && request.resource.contentType.matches('image/.*');
+    }
+
+    // Status photos: statuses/<uid>/<file>.jpg
+    match /statuses/{userId}/{fileName} {
+      allow read: if signedIn();
+      allow delete: if signedIn() && request.auth.uid == userId;
+      allow create, update: if signedIn() && request.auth.uid == userId
+                   && request.resource.size < 10 * 1024 * 1024
+                   && request.resource.contentType.matches('image/.*');
+    }
+
+    // Profile photos: anyone signed in can see them, only the owner can change theirs.
+    match /profile_images/{fileName} {
+      allow read: if signedIn();
+      allow delete: if signedIn() && fileName == request.auth.uid + '.jpg';
+      allow create, update: if signedIn()
+                   && fileName == request.auth.uid + '.jpg'
+                   && request.resource.size < 5 * 1024 * 1024
+                   && request.resource.contentType.matches('image/.*');
+    }
+  }
+}

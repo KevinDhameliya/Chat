@@ -2,4 +2,26 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Connectly brand -->
+    <color name="brand_primary">#0F9D8A</color>
+    <color name="brand_primary_dark">#0B7A6B</color>
+    <color name="brand_container">#DDF4EF</color>
+
+    <!-- Surfaces and text -->
+    <color name="screen_background">#FFFFFF</color>
+    <color name="chat_background">#F2F7F6</color>
+    <color name="bubble_sent">#D6F3EC</color>
+    <color name="bubble_received">#FFFFFF</color>
+    <color name="text_primary">#1B2421</color>
+    <color name="text_secondary">#6E7B78</color>
+    <color name="divider">#E7EEEC</color>
+    <color name="search_background">#F1F5F4</color>
+    <color name="dot_inactive">#CFDAD7</color>
+    <color name="reply_quote_background">#140F2A26</color>
+    <color name="danger">#D9486B</color>
+
+    <!-- Message ticks -->
+    <color name="tick_sent">#8A9794</color>
+    <color name="tick_read">#2BA6DE</color>
 </resources>

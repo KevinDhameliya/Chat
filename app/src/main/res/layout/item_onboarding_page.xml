@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingHorizontal="32dp">
+
+    <!-- Illustration -->
+    <FrameLayout
+        android:layout_width="280dp"
+        android:layout_height="280dp">
+
+        <View
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_empty_illustration" />
+
+        <!-- Decorative dots -->
+        <View
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_accent_dot" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_gravity="bottom|start"
+            android:layout_marginStart="28dp"
+            android:layout_marginBottom="44dp"
+            android:background="@drawable/bg_accent_dot" />
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_gravity="top|start"
+            android:layout_marginStart="96dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_accent_dot" />
+
+        <!-- Main card -->
+        <FrameLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_illustration_card"
+            android:elevation="8dp">
+
+            <ImageView
+                android:id="@+id/ivMain"
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                app:tint="@color/brand_primary"
+                tools:src="@drawable/ic_forum" />
+        </FrameLayout>
+
+        <!-- Accent: top start -->
+        <FrameLayout
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="top|start"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/bg_circle_surface"
+            android:elevation="10dp">
+
+            <ImageView
+                android:id="@+id/ivAccentTop"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                app:tint="@color/brand_primary"
+                tools:src="@drawable/ic_chats" />
+        </FrameLayout>
+
+        <!-- Accent: bottom end -->
+        <FrameLayout
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="38dp"
+            android:background="@drawable/bg_avatar"
+            android:elevation="10dp">
+
+            <ImageView
+                android:id="@+id/ivAccentBottom"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                app:tint="@color/white"
+                tools:src="@drawable/ic_call" />
+        </FrameLayout>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:textColor="@color/text_primary"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        tools:text="Stay Connected" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:maxWidth="300dp"
+        android:textColor="@color/text_secondary"
+        android:textSize="15sp"
+        tools:text="Chat with your friends and family anytime, anywhere." />
+</LinearLayout>

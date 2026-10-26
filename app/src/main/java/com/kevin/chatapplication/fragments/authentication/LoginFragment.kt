@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -34,24 +36,21 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.txtSignup.setOnClickListener {
-            val action = LoginFragmentDirections.actionLoginFragmentToSignupFragment("Kevin")
+        binding.btnCreateAccount.setOnClickListener {
+            val action = LoginFragmentDirections.actionLoginFragmentToSignupFragment()
             findNavController().navigate(action)
         }
 
-        binding.btLogin.setOnClickListener {
+        binding.btLogin.setOnClickListener { submit() }
 
-            val email =
-                binding.etEmail.text.toString().trim()
-
-            val password =
-                binding.editTextTextPassword.text.toString()
-
-            viewModel.login(
-                email,
-                password
-            )
-
+        // "Done" on the keyboard submits the form.
+        binding.etPassword.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                submit()
+                true
+            } else {
+                false
+            }
         }
 
         binding.txtForgotPassword.setOnClickListener {
@@ -60,13 +59,11 @@ class LoginFragment : Fragment() {
 
         viewModel.uiState.observe(viewLifecycleOwner) { state ->
 
+            setLoading(state == LoginUiState.Loading)
+
             when (state) {
 
-                LoginUiState.Loading -> {
-
-                    // Show ProgressBar
-
-                }
+                LoginUiState.Loading -> Unit
 
                 LoginUiState.Success -> {
 
@@ -94,6 +91,20 @@ class LoginFragment : Fragment() {
 
         }
 
+    }
+
+    private fun submit() {
+        val email = binding.etEmail.text?.toString()?.trim().orEmpty()
+        val password = binding.etPassword.text?.toString().orEmpty()
+        viewModel.login(email, password)
+    }
+
+    private fun setLoading(loading: Boolean) {
+        binding.btLogin.isEnabled = !loading
+        binding.btLogin.text = if (loading) "" else getString(R.string.continue_label)
+        binding.progressLogin.isVisible = loading
+        binding.tilEmail.isEnabled = !loading
+        binding.tilPassword.isEnabled = !loading
     }
 
     override fun onDestroyView() {

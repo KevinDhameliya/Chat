@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layered teal waves along the bottom of the splash screen. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="200dp"
+    android:viewportWidth="360"
+    android:viewportHeight="200">
+    <path
+        android:fillAlpha="0.18"
+        android:fillColor="@color/brand_primary"
+        android:pathData="M0,80 C90,20 180,140 270,90 C310,68 340,60 360,64 L360,200 L0,200 Z" />
+    <path
+        android:fillAlpha="0.35"
+        android:fillColor="@color/brand_primary"
+        android:pathData="M0,130 C80,90 160,170 250,130 C300,108 335,110 360,118 L360,200 L0,200 Z" />
+    <path
+        android:fillAlpha="0.75"
+        android:fillColor="@color/brand_primary"
+        android:pathData="M0,170 C100,140 200,195 300,165 C330,156 348,154 360,156 L360,200 L0,200 Z" />
+</vector>

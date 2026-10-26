@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="24dp"
+    android:paddingTop="8dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivPreview"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:background="@color/reply_quote_background"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Connectly.Rounded12" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Connectly.TextField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="@string/caption_hint"
+        app:counterEnabled="true"
+        app:counterMaxLength="140">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCaption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLength="140"
+            android:maxLines="3" />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>
